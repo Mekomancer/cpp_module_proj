@@ -48,9 +48,11 @@ target_sources(project_name
 
 
 add_custom_target(format 
-  clang-format-20 -i
-  $<PATH:ABSOLUTE_PATH,$<TARGET_PROPERTY:project_name,SOURCES>,${CMAKE_SOURCE_DIR}>
-  $<PATH:ABSOLUTE_PATH,$<TARGET_PROPERTY:project_name,CXX_MODULE_SET>,${CMAKE_SOURCE_DIR}>
+  COMMAND clang-format-20 -i
+  "$<PATH:ABSOLUTE_PATH,$<TARGET_PROPERTY:project_name,SOURCES>
+  ,${CMAKE_SOURCE_DIR}>"
+  "$<PATH:ABSOLUTE_PATH,$<TARGET_PROPERTY:project_name,CXX_MODULE_SET>
+  ,${CMAKE_SOURCE_DIR}>"
   COMMAND_EXPAND_LISTS
   VERBATIM
 )
