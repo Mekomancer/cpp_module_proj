@@ -7,18 +7,22 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY target)
 
 project(project_name
-  VERSION 0.1.1 # SemVer
-  DESCRIPTION "A terminal with an emphasis on features without overhead"
+  VERSION 0.1.0 # SemVer
+  DESCRIPTION "Lorem ipsum dolor sit amet"
   LANGUAGES CXX
 )
+
 set(cxx_modules_path NOTFOUND)
 set(homedir NOTFOUND)
+
 file(REAL_PATH ~ homedir EXPAND_TILDE) 
+
 find_path(cxx_modules_path std.cppm 
-  PATHS  ${homedir}
+  PATHS ${homedir}
   PATH_SUFFIXES /llvm-project/build/modules/c++/v1/
   REQUIRED
 )
+
 if(NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE "Debug")
   set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS
@@ -46,9 +50,8 @@ target_sources(project_name
   src/types.cxx
 )
 
-
 add_custom_target(format 
-  COMMAND clang-format-20 -i
+  COMMAND clang-format -i
   "$<PATH:ABSOLUTE_PATH,$<TARGET_PROPERTY:project_name,SOURCES>
   ,${CMAKE_SOURCE_DIR}>"
   "$<PATH:ABSOLUTE_PATH,$<TARGET_PROPERTY:project_name,CXX_MODULE_SET>
