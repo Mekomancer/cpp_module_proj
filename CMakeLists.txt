@@ -18,7 +18,7 @@ set(homedir NOTFOUND)
 file(REAL_PATH ~ homedir EXPAND_TILDE) 
 
 find_path(cxx_modules_path std.cppm 
-  PATHS ${homedir}
+  PATHS ${homedir} ${homedir}/source
   PATH_SUFFIXES /llvm-project/build/modules/c++/v1/
   REQUIRED
 )
@@ -47,7 +47,7 @@ target_sources(project_name
   FILE_SET CXX_MODULES
   BASE_DIRS src
   FILES
-  src/types.cxx
+  src/types.hxx
 )
 
 add_custom_target(format 
