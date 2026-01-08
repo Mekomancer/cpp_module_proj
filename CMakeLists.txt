@@ -47,7 +47,8 @@ target_sources(project_name
   FILE_SET CXX_MODULES
   BASE_DIRS src
   FILES
-  src/types.hxx
+  src/types.cppm
+  src/cmdline.cppm
 )
 
 add_custom_target(format 

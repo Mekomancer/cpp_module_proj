@@ -1,4 +1,7 @@
 import std;
 import types;
-
-int main(int argc, char *argv[]) { std::print("(^-.-^)zzz"); }
+import cmdline;
+int main(int argc, char *argv[]) { 
+  if(quick_parse_args(argc,argv)) return 0;
+  std::print("(^-.-^)zzz"); 
+}
