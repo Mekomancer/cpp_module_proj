@@ -42,7 +42,7 @@ FetchContent_MakeAvailable(std)
 
 add_executable(${PROJECT_NAME}
   src/main.cpp
-  src/cmdline.cxx
+  src/cmdline/base.cxx
 )
 
 target_sources(${PROJECT_NAME}
