@@ -1,10 +1,12 @@
 cmake_minimum_required(VERSION 4.2) # nice
+
 set(CMAKE_EXPERIMENTAL_CXX_IMPORT_STD "d0edc3af-4c50-42ea-a356-e2862fe7a444")
 set(CMAKE_CXX_COMPILER_IMPORT_STD 26)
 set(CMAKE_CXX_STANDARD 26)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY target)
+
 project(project_name
   VERSION 0.0.0 # SemVer
   DESCRIPTION "Lorem ipsum dolor sit amet"
@@ -18,7 +20,7 @@ file(REAL_PATH ~ homedir EXPAND_TILDE)
 
 find_path(cxx_modules_path std.cppm 
   PATHS ${homedir} ${homedir}/source 
-  # I keep source code here---^^^^^^ (except for my own repos)
+  # I keep source code here--^^^^^^^ (except for my own repos)
   PATH_SUFFIXES /llvm-project/build/modules/c++/v1/
   REQUIRED
 )
@@ -48,8 +50,8 @@ target_sources(${PROJECT_NAME}
   FILE_SET CXX_MODULES
   BASE_DIRS src
   FILES
-  src/types.cppm
-  src/cmdline.cppm
+  src/types.ixx
+  src/cmdline.ixx
 )
 
 add_custom_target(format 
